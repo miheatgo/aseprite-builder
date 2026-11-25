@@ -58,7 +58,7 @@ jobs:
       - name: Fix icudtl.dat location
         run: |
           mkdir -p skia/third_party/externals/icu/flutter
-          cp skia/third_party/externals/icu/common/icudtl.dat skia/third_party/externals/icu/flutter/
+          cp skia/third_party/externals/icu/flutter/icudtl.dat skia/third_party/externals/icu/flutter/
 
       - name: Run CMake Configuration
         shell: powershell
