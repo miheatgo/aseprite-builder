@@ -55,11 +55,13 @@ jobs:
       - name: Initialize MSVC Environment
         uses: ilammy/msvc-dev-cmd@v1
 
-      - name: Fix icudtl.dat location
+      - - name: Fix icudtl.dat location
         run: |
-          mkdir -p skia/third_party/externals/icu/flutter
-          cp skia/third_party/externals/icu/flutter/icudtl.dat skia/third_party/externals/icu/flutter/
-
+           # 确保目标文件夹存在
+           mkdir -p skia/third_party/externals/icu/flutter
+           # 使用 find 命令动态查找 icudtl.dat 并复制到目标位置
+           find skia/third_party/externals/icu -name "icudtl.dat" -exec cp {} skia/third_party/externals/icu/flutter/ \;
+          
       - name: Run CMake Configuration
         shell: powershell
         run: |
